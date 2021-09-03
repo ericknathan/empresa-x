@@ -12,25 +12,18 @@ function buscarFuncionario(array $funcionarios, string $termo) {
     foreach($funcionario as $key => $prop) {
       if(strpos(strtolower($funcionario -> $key), strtolower($termo)) !== false) {
         $filtroFuncionarios[] = $funcionario;
+        break;
       }
     }
   }
   return $filtroFuncionarios;
 }
 
-function adicionarFuncionario($nome, $sobrenome, $email, $sexo, $ip, $pais, $departamento) {
-  $arquivo = lerArquivo('./funcionarios.json');
-  $id = "1100002";
-  //Editando a linha que vc quer
-  $arquivo[0][] = [
-    "id" => $id,
-    "first_name" => $nome,
-    "last_name" => $sobrenome,
-    "email" => $email,
-    "gender" => $sexo,
-    "ip_address" => $ip,
-    "country" => $pais,
-    "department" => $departamento
-  ];
-  // TODO!
+function adicionarFuncionario(array $funcionario) {
+  $funcionarios = lerArquivo('funcionarios.json');
+  $id = count($funcionarios) + 1;
+  $funcionario['id'] = $id;
+  $funcionarios[] = $funcionario;
+  $json = json_encode($funcionarios);
+  file_put_contents('funcionarios.json', $json);
 }

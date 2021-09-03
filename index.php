@@ -6,7 +6,23 @@
     $funcionarios = buscarFuncionario($funcionarios, $_GET["nomeFuncionario"]);
   }
 
-  adicionarFuncionario('Erick', 'Nathan', 'erick.capito@hotmail.com', 'Male', '181929939', 'Brazil', 'TI')
+  if(!empty($_GET["first_name"]) && !empty($_GET["last_name"]) &&
+     !empty($_GET["email"]) && !empty($_GET["gender"]) &&
+     !empty($_GET["ip_address"]) && !empty($_GET["country"])
+     && !empty($_GET["department"])) {
+      adicionarFuncionario([
+        "first_name" => $_GET["first_name"],
+        "last_name" => $_GET["last_name"],
+        "email" => $_GET["email"],
+        "gender" => $_GET["gender"],
+        "ip_address" => $_GET["ip_address"],
+        "country" => $_GET["country"],
+        "department" => $_GET["department"],
+      ]);
+
+      $funcionarios = lerArquivo('./funcionarios.json');
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -64,13 +80,13 @@
       <div class="modal">
         <h2>Adição de novo funcionário</h2>
         <form>
-          <input type="text" required placeholder="Primeiro nome">
-          <input type="text" required placeholder="Último nome">
-          <input type="text" required placeholder="Email">
-          <input type="text" required placeholder="Sexo">
-          <input type="text" required placeholder="Endereço IP">
-          <input type="text" required placeholder="País">
-          <input type="text" required placeholder="Departamento">
+          <input type="text" name="first_name" required placeholder="Primeiro nome">
+          <input type="text" name="last_name" required placeholder="Último nome">
+          <input type="text" name="email" required placeholder="Email">
+          <input type="text" name="gender" required placeholder="Sexo">
+          <input type="text" name="ip_address" required placeholder="Endereço IP">
+          <input type="text" name="country" required placeholder="País">
+          <input type="text" name="department" required placeholder="Departamento">
           <div class="buttons">
             <button id="cancel" type="button">Cancelar</button>
             <button id="send">Adicionar</button>
