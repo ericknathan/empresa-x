@@ -39,7 +39,7 @@
   <h1>Funcionários da empresa X</h1>
   <p>A empresa conta com <?= count($funcionarios) ?> funcionários para este filtro</p>
   <form>
-    <input type="text" placeholder="Digite a informação na qual você gostaria de procurar" name="nomeFuncionario" required value="<?= $_GET["nomeFuncionario"] ?? '' ?>">
+    <input type="text" placeholder="Digite a informação para busca" name="nomeFuncionario" required value="<?= $_GET["nomeFuncionario"] ?? '' ?>">
     <button>
       <img src="./search.png" alt="Pesquisar">
     </button>
@@ -83,7 +83,10 @@
           <input type="text" name="first_name" required placeholder="Primeiro nome">
           <input type="text" name="last_name" required placeholder="Último nome">
           <input type="text" name="email" required placeholder="Email">
-          <input type="text" name="gender" required placeholder="Sexo">
+          <select name="gender" id="gender" required placeholder="Sexo">
+            <option value="Male">Masculino</option>
+            <option value="Female">Feminino</option>
+          </select>
           <input type="text" name="ip_address" required placeholder="Endereço IP">
           <input type="text" name="country" required placeholder="País">
           <input type="text" name="department" required placeholder="Departamento">
