@@ -6,12 +6,12 @@ function lerArquivo(string $nomeArquivo) {
   return $jsonArray;
 }
 
-function buscarFuncionario(array $funcionarios, string $termo) {
+function buscarFuncionario(array $funcionarios, string $filtro) {
   $filtroFuncionarios = [];
   foreach($funcionarios as $funcionario) {
-    foreach($funcionario as $key => $prop) {
-      if(strpos(strtolower($funcionario -> $key), strtolower($termo)) !== false ||
-         strpos(strtolower($funcionario -> first_name) . " " . strtolower($funcionario -> last_name), strtolower($termo)) !== false) {
+    foreach($funcionario as $key => $value) {
+      if(strpos(strtolower($funcionario -> $key), strtolower($filtro)) !== false ||
+         strpos(strtolower($funcionario -> first_name) . " " . strtolower($funcionario -> last_name), strtolower($filtro)) !== false) {
           $filtroFuncionarios[] = $funcionario;
           break;
       }
@@ -22,9 +22,8 @@ function buscarFuncionario(array $funcionarios, string $termo) {
 
 function adicionarFuncionario(array $funcionario) {
   $funcionarios = lerArquivo('funcionarios.json');
-  $id = count($funcionarios) + 1;
+  $id = end($funcionarios) -> id + 1;
   $funcionario['id'] = $id;
   $funcionarios[] = $funcionario;
-  $json = json_encode($funcionarios);
-  file_put_contents('funcionarios.json', $json);
+  file_put_contents('funcionarios.json', json_encode($funcionarios));
 }

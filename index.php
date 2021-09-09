@@ -2,27 +2,9 @@
   require('./functions.php');
   $funcionarios = lerArquivo('./funcionarios.json');
 
-  if(!empty($_GET["nomeFuncionario"])) {
-    $funcionarios = buscarFuncionario($funcionarios, $_GET["nomeFuncionario"]);
+  if(!empty($_GET["filtro"])) {
+    $funcionarios = buscarFuncionario($funcionarios, $_GET["filtro"]);
   }
-
-  if(!empty($_GET["first_name"]) && !empty($_GET["last_name"]) &&
-     !empty($_GET["email"]) && !empty($_GET["gender"]) &&
-     !empty($_GET["ip_address"]) && !empty($_GET["country"])
-     && !empty($_GET["department"])) {
-      adicionarFuncionario([
-        "first_name" => $_GET["first_name"],
-        "last_name" => $_GET["last_name"],
-        "email" => $_GET["email"],
-        "gender" => $_GET["gender"],
-        "ip_address" => $_GET["ip_address"],
-        "country" => $_GET["country"],
-        "department" => $_GET["department"],
-      ]);
-
-      header('location:' . dirname($_SERVER['PHP_SELF']));
-  }
-
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +21,7 @@
   <h1>Funcionários da empresa X</h1>
   <p>A empresa conta com <?= count($funcionarios) ?> funcionários para este filtro</p>
   <form>
-    <input type="text" placeholder="Digite a informação para busca" name="nomeFuncionario" required value="<?= $_GET["nomeFuncionario"] ?? '' ?>">
+    <input type="text" placeholder="Digite a informação para busca" name="filtro" required value="<?= $_GET["filtro"] ?? '' ?>">
     <button>
       <img src="./search.png" alt="Pesquisar">
     </button>
@@ -84,6 +66,7 @@
           <input type="text" name="last_name" required placeholder="Último nome">
           <input type="text" name="email" required placeholder="Email">
           <select name="gender" id="gender" required placeholder="Sexo">
+            <option disabled selected value>Sexo</option>
             <option value="Male">Masculino</option>
             <option value="Female">Feminino</option>
           </select>
@@ -91,7 +74,7 @@
           <input type="text" name="country" required placeholder="País">
           <input type="text" name="department" required placeholder="Departamento">
           <div class="buttons">
-            <button id="cancel" type="button">Cancelar</button>
+            <button id="cancel" type="button" action="actions.php">Cancelar</button>
             <button id="send">Adicionar</button>
           </div>
         </form>
