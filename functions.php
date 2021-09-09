@@ -10,12 +10,10 @@ function buscarFuncionario(array $funcionarios, string $termo) {
   $filtroFuncionarios = [];
   foreach($funcionarios as $funcionario) {
     foreach($funcionario as $key => $prop) {
-      if(strpos(strtolower($funcionario -> first_name) . " " . strtolower($funcionario -> last_name), strtolower($termo)) !== false) {
-        $filtroFuncionarios[] = $funcionario;
-        break;
-      } elseif (strpos(strtolower($funcionario -> $key), strtolower($termo)) !== false) {
-        $filtroFuncionarios[] = $funcionario;
-        break;
+      if(strpos(strtolower($funcionario -> $key), strtolower($termo)) !== false ||
+         strpos(strtolower($funcionario -> first_name) . " " . strtolower($funcionario -> last_name), strtolower($termo)) !== false) {
+          $filtroFuncionarios[] = $funcionario;
+          break;
       }
     }
   }
