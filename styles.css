@@ -55,11 +55,15 @@ th {
 }
 
 table tr:not(:first-child):hover {
-  cursor: pointer;
+  cursor: default;
 }
 
-table tr:nth-child(even) {background: #FFF}
-table tr:nth-child(odd) {background: #DDD}
+table tr:nth-child(even) {
+  background: #fff;
+}
+table tr:nth-child(odd) {
+  background: #ddd;
+}
 
 #add__new {
   position: fixed;
@@ -68,13 +72,13 @@ table tr:nth-child(odd) {background: #DDD}
   width: 50px;
   height: 50px;
   border-radius: 25px;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   cursor: pointer;
-  
+
   background-color: black;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transition: all 0.2s ease-in-out;
