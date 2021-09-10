@@ -1,10 +1,7 @@
 <?php
   require('./functions.php');
+  require('./actions.php');
   $funcionarios = lerArquivo('./funcionarios.json');
-
-  if(!empty($_GET["filtro"])) {
-    $funcionarios = buscarFuncionario($funcionarios, $_GET["filtro"]);
-  }
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +13,7 @@
   <title>Empresa X</title>
   <link rel="stylesheet" href="./styles.css">
   <script src="./scripts.js" defer></script>
+  <script src="https://kit.fontawesome.com/7cbb7ae6e7.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <h1>Funcionários da empresa X</h1>
@@ -23,7 +21,7 @@
   <form>
     <input type="text" placeholder="Digite a informação para busca" name="filtro" required value="<?= $_GET["filtro"] ?? '' ?>">
     <button>
-      <img src="./search.png" alt="Pesquisar">
+      <i class="fas fa-search"></i>
     </button>
   </form>
   <table>
@@ -36,6 +34,7 @@
       <th>Endereço IP</th>
       <th>País</th>
       <th>Departamento</th>
+      <th>Ações</th>
     </tr>
     <?php
       foreach($funcionarios as $funcionario) :
@@ -49,6 +48,10 @@
         <td> <?= $funcionario -> ip_address ?> </td>
         <td> <?= $funcionario -> country ?> </td>
         <td> <?= $funcionario -> department ?> </td>
+        <td class="actions" key="<?= $funcionario -> id ?>">
+          <a id="update" href="./update.php?id=<?= $funcionario -> id ?>"><i class="fas fa-user-edit"></i></a>
+          <a id="delete" onclick="deleteUser(<?= $funcionario -> id ?>)"><i class="fas fa-trash"></i></i></button>
+        </td>
       </tr>
     <?php
       endforeach;
@@ -57,8 +60,8 @@
   <div id="add__new">
     <p>+</p>
   </div>
-  <div id="container__modal">
-      <div id="bg"></div>
+  <div id="add__modal" class="container__modal">
+      <div class="bg"></div>
       <div class="modal">
         <h2>Adição de novo funcionário</h2>
         <form>
@@ -74,8 +77,8 @@
           <input type="text" name="country" required placeholder="País">
           <input type="text" name="department" required placeholder="Departamento">
           <div class="buttons">
-            <button id="cancel" type="button" action="actions.php">Cancelar</button>
-            <button id="send">Adicionar</button>
+            <button class="cancel" type="button" action="actions.php">Cancelar</button>
+            <button class="send">Adicionar</button>
           </div>
         </form>
       </div>

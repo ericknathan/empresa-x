@@ -1,17 +1,24 @@
 const newButton = document.getElementById('add__new');
-const cancelButton = document.getElementById('cancel');
+const cancelButton = document.querySelectorAll('.cancel');
 const sendButton = document.getElementById('send');
-const modal = document.getElementById('container__modal');
-const modalBackground = document.getElementById('bg');
+const newModal = document.getElementById('add__modal');
+const modalBackground = document.querySelectorAll('.bg');
 
 newButton.addEventListener('click', openNewModal);
-cancelButton.addEventListener('click', closeNewModal);
-modalBackground.addEventListener('click', closeNewModal);
+cancelButton.forEach((button) => button.addEventListener('click', closeModal));
+modalBackground.forEach((bg) => bg.addEventListener('click', closeModal));
 
 function openNewModal() {
-  modal.style.display = 'flex';
+  newModal.style.display = 'flex';
 }
 
-function closeNewModal() {
-  modal.style.display = 'none';
+function closeModal() {
+  newModal.style.display = 'none';
+}
+
+function deleteUser(userId) {
+  let confirmation = confirm("Deseja deletar o usuário?");
+  if (confirmation) {
+    window.location.href = `./delete.php?id=${userId}`;
+  }
 }

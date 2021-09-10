@@ -65,6 +65,35 @@ table tr:nth-child(odd) {
   background: #ddd;
 }
 
+table tr td.actions {
+  display: flex;
+  width: 90px;
+  justify-content: space-between;
+}
+
+table tr td a {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+table tr td a#update {
+  background: green;
+}
+
+table tr td a#delete {
+  background: red;
+}
+
+table tr td a i {
+  color: white;
+}
+
 #add__new {
   position: fixed;
   bottom: 30px;
@@ -94,7 +123,7 @@ table tr:nth-child(odd) {
   color: white;
 }
 
-#container__modal {
+.container__modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -105,14 +134,14 @@ table tr:nth-child(odd) {
   justify-content: center;
 }
 
-#container__modal #bg {
+.container__modal .bg {
   position: relative;
   width: 100%;
   height: 100%;
   background-color: #12121233;
 }
 
-#container__modal .modal {
+.container__modal .modal {
   background-color: white;
   width: 600px;
   position: absolute;
@@ -126,15 +155,15 @@ table tr:nth-child(odd) {
   gap: 24px;
 }
 
-#container__modal .modal form {
+.container__modal .modal form {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-#container__modal .modal form input,
-#container__modal .modal form select {
+.container__modal .modal form input,
+.container__modal .modal form select {
   height: 50px;
   border: none;
   border-radius: 8px;
@@ -143,24 +172,24 @@ table tr:nth-child(odd) {
   outline: none;
 }
 
-#container__modal .modal form select {
+.container__modal .modal form select {
   color: #868686;
 }
 
-#container__modal .modal form input:focus,
-#container__modal .modal form select:focus {
+.container__modal .modal form input:focus,
+.container__modal .modal form select:focus {
   border: 2px solid #2b2b2b;
   border-radius: 8px;
   padding: 0 11px;
 }
 
-#container__modal .modal form .buttons {
+.container__modal .modal form .buttons {
   display: flex;
   width: 100%;
   gap: 12px;
 }
 
-#container__modal .modal form button {
+.container__modal .modal form button {
   height: 50px;
   flex: 1;
   border: none;
@@ -170,10 +199,24 @@ table tr:nth-child(odd) {
   cursor: pointer;
 }
 
-#cancel {
+.cancel {
   background-color: red;
 }
 
-#send {
+.send {
   background-color: green;
+}
+
+#delete__modal p {
+  text-align: center;
+  padding: 8px 24px;
+  color: #636363;
+}
+
+#delete__modal button.cancel {
+  background-color: #12121277;
+}
+
+#delete__modal button.delete {
+  background-color: red;
 }
