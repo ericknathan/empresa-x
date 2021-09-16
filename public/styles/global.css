@@ -31,6 +31,11 @@ body > form button {
   height: 30px;
 }
 
+body > form .buttons {
+  display: flex;
+  gap: 8px;
+}
+
 body > form button img {
   width: 16px;
   height: 16px;
@@ -71,7 +76,7 @@ table tr td.actions {
   justify-content: space-between;
 }
 
-table tr td a {
+table tr td a, body > form button#update {
   width: 30px;
   height: 30px;
   border-radius: 4px;
@@ -80,6 +85,8 @@ table tr td a {
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  border: none;
+  color: white;
 }
 
 table tr td a#update {

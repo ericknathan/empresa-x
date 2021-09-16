@@ -17,8 +17,8 @@ function closeModal() {
 }
 
 function deleteUser(userId) {
-  let confirmation = confirm("Deseja deletar o usuário?");
+  let confirmation = confirm(`Deseja deletar o usuário ${userId}?`);
   if (confirmation) {
-    window.location.href = `./delete.php?id=${userId}`;
+    window.location.href = `./actions/delete.php?id=${userId}`;
   }
 }

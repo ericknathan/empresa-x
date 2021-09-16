@@ -1,7 +1,7 @@
 <?php
-  require('./functions.php');
-  require('./actions.php');
-  $funcionarios = lerArquivo('./funcionarios.json');
+  require('./public/scripts/functions.php');
+  $funcionarios = lerArquivo('./data/funcionarios.json');
+  require('./actions/search.php');
 ?>
 
 <!DOCTYPE html>
@@ -11,8 +11,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Empresa X</title>
-  <link rel="stylesheet" href="./styles.css">
-  <script src="./scripts.js" defer></script>
+  <link rel="stylesheet" href="./public/styles/global.css">
+  <script src="./public/scripts/scripts.js" defer></script>
   <script src="https://kit.fontawesome.com/7cbb7ae6e7.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -49,7 +49,7 @@
         <td> <?= $funcionario -> country ?> </td>
         <td> <?= $funcionario -> department ?> </td>
         <td class="actions" key="<?= $funcionario -> id ?>">
-          <a id="update" href="./update.php?id=<?= $funcionario -> id ?>"><i class="fas fa-user-edit"></i></a>
+          <a id="update" href="./edit.php?id=<?= $funcionario -> id ?>"><i class="fas fa-user-edit"></i></a>
           <a id="delete" onclick="deleteUser(<?= $funcionario -> id ?>)"><i class="fas fa-trash"></i></i></button>
         </td>
       </tr>
@@ -77,7 +77,7 @@
           <input type="text" name="country" required placeholder="País">
           <input type="text" name="department" required placeholder="Departamento">
           <div class="buttons">
-            <button class="cancel" type="button" action="actions.php">Cancelar</button>
+            <button class="cancel" type="button" action="./actions/create.php">Cancelar</button>
             <button class="send">Adicionar</button>
           </div>
         </form>

@@ -1,4 +1,5 @@
 <?php 
+$jsonPath = __DIR__ . '/../../data/funcionarios.json';
 
 function lerArquivo(string $nomeArquivo) {
   $arquivo = file_get_contents($nomeArquivo);
@@ -30,37 +31,41 @@ function buscarFuncionarioPorId(array $funcionarios, string $id) {
 }
 
 function adicionarFuncionario(array $funcionario) {
-  $funcionarios = lerArquivo('funcionarios.json');
+  global $jsonPath;
+  $funcionarios = lerArquivo($jsonPath);
   $id = end($funcionarios) -> id + 1;
   $funcionario['id'] = $id;
   $funcionarios[] = $funcionario;
-  file_put_contents('funcionarios.json', json_encode($funcionarios));
+  file_put_contents($jsonPath, json_encode($funcionarios));
 }
 
 function editarFuncionario(string $id, array $funcionarioEditado) {
-  $funcionarios = lerArquivo('funcionarios.json');
+  global $jsonPath;
+  $funcionarios = lerArquivo($jsonPath);
   foreach($funcionarios as $index => $funcionario) {
     if(strpos(strtolower($funcionario -> id), strtolower($id)) !== false) {
         $funcionarios[$index] = $funcionarioEditado;
         break;
     }
   }
-  file_put_contents('funcionarios.json', json_encode($funcionarios));
+  file_put_contents($jsonPath, json_encode($funcionarios));
 }
 
 function deletarFuncionario(string $idFuncionario) {
-  $funcionarios = lerArquivo('funcionarios.json');
+  global $jsonPath;
+  $funcionarios = lerArquivo($jsonPath);
   foreach($funcionarios as $index => $funcionario) {
     if(strpos(strtolower($funcionario -> id), strtolower($idFuncionario)) !== false) {
         unset($funcionarios[$index]);
         break;
     }
   }
-  file_put_contents('funcionarios.json', json_encode(array_values($funcionarios)));
+  file_put_contents($jsonPath, json_encode(array_values($funcionarios)));
 }
 
 function inserirInformacoes(string $userId) {
-  $funcionarios = lerArquivo('funcionarios.json');
+  global $jsonPath;
+  $funcionarios = lerArquivo($jsonPath);
   $user = buscarFuncionarioPorId($funcionarios, $userId);
   return $user;
 }
