@@ -64,7 +64,7 @@
       <div class="bg"></div>
       <div class="modal">
         <h2>Adição de novo funcionário</h2>
-        <form>
+        <form action="./actions/create.php">
           <input type="text" name="first_name" required placeholder="Primeiro nome">
           <input type="text" name="last_name" required placeholder="Último nome">
           <input type="text" name="email" required placeholder="Email">
@@ -77,7 +77,7 @@
           <input type="text" name="country" required placeholder="País">
           <input type="text" name="department" required placeholder="Departamento">
           <div class="buttons">
-            <button class="cancel" type="button" action="./actions/create.php">Cancelar</button>
+            <button class="cancel" type="button">Cancelar</button>
             <button class="send">Adicionar</button>
           </div>
         </form>

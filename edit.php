@@ -5,7 +5,8 @@
     header("Location: ./error.php?error=O id do usuário não foi inserido");
   }
 
-  $user = inserirInformacoes($_GET['id']);
+  $user = inserirInformacoes("./data/funcionarios.json", $_GET['id']);
+  $id = $_GET['id']
 
 ?>
 
@@ -22,7 +23,7 @@
 <body>
   <h2>Edição de funcionário</h2>
   <form action="./actions/update.php">
-    <input id="input_id" type="hidden" name="input_id">
+    <input id="input_id" type="hidden" name="input_id" value=<?= $id ?>>
     <input id="first_name" type="text" name="first_name" required placeholder="Primeiro nome" value=<?= $user->first_name ?>>
     <input id="last_name" type="text" name="last_name" required placeholder="Último nome" value=<?= $user->last_name ?>>
     <input id="email" type="text" name="email" required placeholder="Email" value=<?= $user->email ?>>
