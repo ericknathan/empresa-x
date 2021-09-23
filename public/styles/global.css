@@ -1,42 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
-body {
+header {
   width: 100%;
+  background-color: #6C7A89;
+  color: white;
+  padding: 24px;
+}
+
+header h1 {
+  font-size: 24px;
+}
+
+header, nav, a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+span {
+  font-weight: bold;
+}
+
+main {
+  width: 100%;
+  padding: 5vh 15vw 10vh 15vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10vh 15vw;
   gap: 16px;
 }
 
-body > form {
+body main > form {
   display: flex;
   width: 100%;
   gap: 8px;
 }
 
-body > form input {
+body main > form input {
   flex: 1;
   padding: 0 8px;
 }
 
-body > form button {
+body main > form button {
   width: 30px;
   height: 30px;
 }
 
-body > form .buttons {
+body main > form .buttons {
   display: flex;
   gap: 8px;
 }
 
-body > form button img {
+body main > form button img {
   width: 16px;
   height: 16px;
 }
@@ -76,7 +105,7 @@ table tr td.actions {
   justify-content: space-between;
 }
 
-table tr td a, body > form button#update {
+table tr td a, body main > form button#update {
   width: 30px;
   height: 30px;
   border-radius: 4px;
@@ -115,7 +144,7 @@ table tr td a i {
 
   cursor: pointer;
 
-  background-color: black;
+  background-color: #636363;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transition: all 0.2s ease-in-out;
 }

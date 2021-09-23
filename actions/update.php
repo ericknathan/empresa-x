@@ -15,7 +15,7 @@
     ];
     editarFuncionario("../data/funcionarios.json", $novoFuncionario);
  
-    header('location: ../index.php');
+    header('location: ../area_restrita.php');
   } else {
     header('location: ../error.php?error=O id do usuário não foi inserido');
   }

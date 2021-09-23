@@ -15,7 +15,7 @@
                 "department" => $_GET["department"],
               ]);
 
-              header('location: ../index.php');
+              header('location: ../area_restrita.php');
             } else {
               header('location: ../error.php?error=As informações do usuário não foram inseridas corretamente');
             }
